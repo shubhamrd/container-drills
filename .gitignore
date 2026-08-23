@@ -1,0 +1,58 @@
+AGENTS.md
+	HEARTBEAT.md
+	IDENTITY.md
+	SOUL.md
+	TOOLS.md
+	USER.md
+	openclaw-workspace-state.json
+	telegram_config.json
+# OpenClaw generated files
+.openclaw/
+*.openclaw
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Cache
+.cache/
+.cache.*
+
+# Configuration files that might contain secrets
+config.json
+secrets.json
+*.secret
+*.token
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# User-generated content
+user-data/
+uploads/
+
+# Backup files
+*.bak
+*.backup
+
+# Docker
+.docker/
+docker-compose.yml
+Dockerfile
+*.docker
