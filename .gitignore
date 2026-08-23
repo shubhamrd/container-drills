@@ -1,3 +1,4 @@
+.gitignore
 # OpenClaw workspace configuration files (should not be pushed to public repos)
 HEARTBEAT.md
 IDENTITY.md
