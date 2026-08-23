@@ -1,11 +1,14 @@
-AGENTS.md
-	HEARTBEAT.md
-	IDENTITY.md
-	SOUL.md
-	TOOLS.md
-	USER.md
-	openclaw-workspace-state.json
-	telegram_config.json
+# OpenClaw workspace configuration files (should not be pushed to public repos)
+HEARTBEAT.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+USER.md
+content.md
+labs.md
+openclaw-workspace-state.json
+telegram_config.json
+
 # OpenClaw generated files
 .openclaw/
 *.openclaw
