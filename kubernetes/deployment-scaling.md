@@ -1,6 +1,6 @@
 # Deployment and Scaling
 
-## Non-Technical Example
+## Real World Analogy
 Deployment and scaling in Kubernetes is like managing a restaurant business and knowing when to expand or reduce operations.
 
 Think of it like:
@@ -19,7 +19,7 @@ When you have a successful restaurant, you start by:
 4. Reducing staff during slow periods (scale down)
 5. Expanding kitchens for peak demand (horizontal scaling)
 
-## Technical Description
+## Technical Explanation
 Deployment and scaling in Kubernetes are fundamental operations that manage application availability and resource utilization. These processes are controlled through Kubernetes primitives and automated tools.
 
 **Deployment Concepts:**
@@ -40,7 +40,7 @@ Deployment and scaling in Kubernetes are fundamental operations that manage appl
 - **Blue-Green Deployment**: Zero-downtime deployments with dual environments
 - **Canary Releases**: Gradual rollout to small subset of users
 
-## Hands-On Lab: Deployment and Scaling Operations
+## Lab Exercise: Deployment and Scaling Operations
 In this lab, you'll practice deployment and scaling concepts.
 
 ### Lab Steps

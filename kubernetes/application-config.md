@@ -1,6 +1,6 @@
 # Application Configuration
 
-## Non-Technical Example
+## Real World Analogy
 Application configuration in Kubernetes is like setting up a restaurant menu and kitchen operations before opening.
 
 Think of it like:
@@ -17,7 +17,7 @@ When you're preparing to open a restaurant:
 4. **Testing**: Trial-run new dishes with staff
 5. **Adaptation**: Adjust based on feedback or supply chain issues
 
-## Technical Description
+## Technical Explanation
 Application configuration in Kubernetes separates application code from configuration data, allowing for flexible deployment and management. This follows the principle of declaring what the application should look like externally (configuration) rather than hardcoding values in the application itself.
 
 **Configuration Methods:**
@@ -40,7 +40,7 @@ Application configuration in Kubernetes separates application code from configur
 - **Validation**: Ensure configuration data meets required schema and constraints
 - **Audit Trail**: Track configuration changes for debugging and compliance
 
-## Hands-On Lab: Managing Application Configuration
+## Lab Exercise: Managing Application Configuration
 In this lab, you'll work with different configuration management methods.
 
 ### Lab Steps

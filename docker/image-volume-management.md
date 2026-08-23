@@ -1,6 +1,6 @@
 # Image Volume Management
 
-## Non-Technical Example
+## Real World Analogy
 Image volume management in Docker is like managing storage space in a large office warehouse with different types of storage units.
 
 Think of it like:
@@ -17,7 +17,7 @@ In warehouse management:
 4. **Security**: Protecting valuable items in secure storage
 5. **Space Utilization**: Maximizing usable storage space efficiently
 
-## Technical Description
+## Technical Explanation
 Image volume management in Docker handles how containerized applications store, access, and organize data that needs persistence beyond container lifecycle. This includes:
 - **Bind Mounts**: Direct mapping of host directories into containers
 - **Named Volumes**: Docker-managed volumes with automatic naming
@@ -37,7 +37,7 @@ Image volume management in Docker handles how containerized applications store, 
 - **Network Volumes**: Shared storage across multiple containers/networks
 - **Volume Mount Options**: Various mount settings including read-only, bind propagation
 
-## Hands-On Lab: Volume Management Techniques
+## Lab Exercise: Volume Management Techniques
 In this lab, you'll explore different volume management approaches.
 
 ### Lab Steps

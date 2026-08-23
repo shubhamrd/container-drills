@@ -1,6 +1,6 @@
 # Self-Healing Applications
 
-## Non-Technical Example
+## Real World Analogy
 Self-healing applications in Kubernetes are like having a smart home system that automatically fixes issues without human intervention.
 
 Think of it like:
@@ -16,7 +16,7 @@ In a smart home:
 4. **Restoration**: Systems return to normal operation automatically
 5. **Learning**: Patterns are learned to improve future responses
 
-## Technical Description
+## Technical Explanation
 Self-healing in Kubernetes refers to the system's ability to automatically detect failures and restore applications to their desired state without manual intervention. This is one of the key benefits of container orchestration.
 
 **Self-Healing Mechanisms:**
@@ -41,7 +41,7 @@ Self-healing in Kubernetes refers to the system's ability to automatically detec
 - **State Restoration**: Recover application state when possible
 - **Alert Generation**: Notify administrators of critical issues
 
-## Hands-On Lab: Testing Self-Healing Capabilities
+## Lab Exercise: Testing Self-Healing Capabilities
 In this lab, you'll observe how Kubernetes automatically heals applications.
 
 ### Lab Steps

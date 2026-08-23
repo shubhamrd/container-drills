@@ -1,6 +1,6 @@
 # Understanding Kubernetes API Primitives
 
-## Non-Technical Example
+## Real World Analogy
 Understanding Kubernetes API primitives is like understanding the fundamental building blocks of a city's infrastructure.
 
 In a city:
@@ -12,7 +12,7 @@ In a city:
 
 Each building block serves a specific purpose, but they all work together in combination to make the entire city function as a cohesive unit. In Kubernetes, these primitives work similarly to create a robust, scalable, and manageable environment for applications.
 
-## Technical Description
+## Technical Explanation
 Kubernetes API primitives are the fundamental objects that define and control various aspects of a Kubernetes cluster. These are the building blocks that form the foundation of Kubernetes architecture and management:
 
 **Core Primitives:**
@@ -31,7 +31,7 @@ Kubernetes API primitives are the fundamental objects that define and control va
 
 These primitives are managed by Kubernetes controllers and communicate through the Kubernetes API server, which acts as the central point of control for all cluster operations.
 
-## Hands-On Lab: Working with Core Kubernetes Primitives
+## Lab Exercise: Working with Core Kubernetes Primitives
 In this lab, you'll experiment with the fundamental API primitives.
 
 ### Lab Steps

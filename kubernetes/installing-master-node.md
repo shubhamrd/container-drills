@@ -1,6 +1,6 @@
 # Installing Masters and Nodes
 
-## Non-Technical Example
+## Real World Analogy
 Installing Kubernetes masters and nodes is like building a complete city infrastructure with separate government and residential zones.
 
 Think of it like:
@@ -20,7 +20,7 @@ Think of it like:
   2. Then you prepare the residential areas for habitation
   3. Finally, you integrate all systems so they can work together
 
-## Technical Description
+## Technical Explanation
 Kubernetes cluster installation involves setting up both control plane (master) nodes and worker nodes. The process can be done manually or using tools like:
 
 **Control Plane Installation:**
@@ -41,7 +41,7 @@ The installation process includes:
 - Certificate management and key distribution
 - Component coordination and initialization
 
-## Hands-On Lab: Setting Up a Simple Kubernetes Cluster
+## Lab Exercise: Setting Up a Simple Kubernetes Cluster
 In this lab, you'll walk through the process of installing a basic Kubernetes cluster with one master and one worker node (simulated).
 
 ### Lab Steps

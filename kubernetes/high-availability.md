@@ -1,6 +1,6 @@
 # Highly-Available Cluster
 
-## Non-Technical Example
+## Real World Analogy
 A highly-available Kubernetes cluster is like a critical infrastructure system that never stops working, similar to how hospitals or power grids operate.
 
 Consider a hospital:
@@ -17,7 +17,7 @@ In Kubernetes:
 - **Load Balancing**: Workload distribution across multiple healthy locations
 - **Self-Healing**: Systems automatically detect and remediate issues
 
-## Technical Description
+## Technical Explanation
 Highly available Kubernetes clusters are designed to minimize downtime and maximize system reliability through redundancy and fault tolerance:
 
 Key HA components:
@@ -34,7 +34,7 @@ Implementation strategies:
 - **Pod Disruption Budgets**: Ensure minimum availability during planned maintenance
 - **Cluster Autoscaling**: Automatically scale cluster size based on demand
 
-## Hands-On Lab: Understanding High Availability Principles
+## Lab Exercise: Understanding High Availability Principles
 In this lab, you'll examine the concepts of high availability through configuration and simulation.
 
 ### Lab Steps

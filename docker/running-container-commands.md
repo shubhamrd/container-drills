@@ -1,6 +1,6 @@
 # Running Container Commands
 
-## Non-Technical Example
+## Real World Analogy
 Running container commands is like driving a car with a manual transmission versus an automatic car.
 
 In a manual car, you have direct control over:
@@ -16,7 +16,7 @@ In a container environment, you have several ways to execute commands:
 
 The "manual transmission" approach gives you full control over what your container does, allowing you to debug, configure, and inspect running containers as needed.
 
-## Technical Description
+## Technical Explanation
 Docker containers can have commands executed in various ways depending on the situation:
 1. **Command execution at container creation**: Using `docker run <image> <command>` to specify what to run when the container starts
 2. **Interactive command execution**: Using `docker exec -it <container> <command>` to run commands inside a running container with a terminal
@@ -29,7 +29,7 @@ Docker containers run processes in an isolated environment, similar to how a san
 - Allows for process management and monitoring
 - Enforces resource limits on processes
 
-## Hands-On Lab: Executing Commands in Running Containers
+## Lab Exercise: Executing Commands in Running Containers
 In this lab, you'll experiment with different ways to run commands inside containers.
 
 ### Lab Steps

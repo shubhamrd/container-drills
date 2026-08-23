@@ -1,6 +1,6 @@
 # Ingress Rules
 
-## Non-Technical Example
+## Real World Analogy
 Ingress rules in Kubernetes are like having a sophisticated front desk and concierge service for a luxury hotel.
 
 Think of it like:
@@ -17,7 +17,7 @@ In a hotel:
 4. **Priority Handling**: Important guests get special attention and accommodations
 5. **Flexible Access**: Guests can request different services based on their needs
 
-## Technical Description
+## Technical Explanation
 Ingress rules in Kubernetes provide HTTP(S) load balancing and routing for services within a cluster. They're the external entry points that enable access to internal services from outside the cluster.
 
 **Key Components:**
@@ -41,7 +41,7 @@ Ingress rules in Kubernetes provide HTTP(S) load balancing and routing for servi
 - **TLS**: Certificate information for secure communication
 - **Annotations**: Custom configuration for specific controllers
 
-## Hands-On Lab: Ingress Rules and Implementation
+## Lab Exercise: Ingress Rules and Implementation
 In this lab, you'll study ingress concepts without fully deploying them.
 
 ### Lab Steps

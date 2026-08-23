@@ -1,6 +1,6 @@
 # CNI (flannel and calico)
 
-## Non-Technical Example
+## Real World Analogy
 CNI plugins in Kubernetes are like choosing different transportation systems for delivering goods across a city.
 
 Think of it like:
@@ -17,7 +17,7 @@ In city logistics:
 4. **Scalability**: Systems can grow with increased delivery needs
 5. **Specialized Services**: Advanced systems provide enhanced filtering and control
 
-## Technical Description
+## Technical Explanation
 Container Network Interface (CNI) plugins in Kubernetes provide the networking implementation for container clusters. They define how pods communicate with each other and with external systems, and they're responsible for managing IP address allocation, routing, and network policies.
 
 **CNI Plugin Categories:**
@@ -45,7 +45,7 @@ Container Network Interface (CNI) plugins in Kubernetes provide the networking i
 - **Routing**: Manages how packets move through the cluster
 - **Integration**: Works with Kubernetes API for automatic management
 
-## Hands-On Lab: CNI Plugin Understanding and Comparison
+## Lab Exercise: CNI Plugin Understanding and Comparison
 In this lab, you'll explore CNI concepts without installing actual plugins.
 
 ### Lab Steps

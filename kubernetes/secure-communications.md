@@ -1,6 +1,6 @@
 # Secure Cluster Communications
 
-## Non-Technical Example
+## Real World Analogy
 Secure cluster communications in Kubernetes is like implementing a comprehensive security system for a bank.
 
 Think of it like:
@@ -27,7 +27,7 @@ In Kubernetes:
 - All internal communication gets encrypted using TLS certificates
 - Access control is enforced at every level through authentication and authorization systems
 
-## Technical Description
+## Technical Explanation
 Kubernetes implements secure communications through multiple layers:
 - **Transport Layer Security (TLS)**: All communication between cluster components uses TLS encryption
 - **Authentication**: Verification of identities using certificates, tokens, or OIDC
@@ -41,7 +41,7 @@ Key secure communication components:
 - **API Server Protection**: Protected by authentication and authorization
 - **Node-to-Node Communication**: Encrypted through the Kubernetes network
 
-## Hands-On Lab: Examining Secure Communication Components
+## Lab Exercise: Examining Secure Communication Components
 In this lab, you'll examine how secure communications are configured in a Kubernetes cluster.
 
 ### Lab Steps

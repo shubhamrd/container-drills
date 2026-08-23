@@ -1,6 +1,6 @@
 # Working with Multiple Images
 
-## Non-Technical Example
+## Real World Analogy
 Working with multiple Docker images is like managing a collection of recipe books in your kitchen. 
 
 Each recipe book (image) has its own unique set of ingredients and cooking instructions (dependencies). When you need to make different dishes (applications):
@@ -16,7 +16,7 @@ Additionally, you can:
 - Archive old recipe books you rarely use (remove unused images)
 - Update existing recipe books (get newer editions)
 
-## Technical Description
+## Technical Explanation
 Docker allows you to work with multiple images by storing them locally in the Docker daemon's image store. Each image is identified by a unique image ID and one or more tags. Multiple tags can refer to the same image, and images can be organized by repository names.
 
 Key concepts in managing multiple images:
@@ -32,7 +32,7 @@ Effective image management practices include:
 - Pulling specific image versions for reproducible builds
 - Tagging images for clarity and organization
 
-## Hands-On Lab: Manage Multiple Docker Images
+## Lab Exercise: Manage Multiple Docker Images
 In this lab, you'll create a scenario to work with multiple images effectively.
 
 ### Lab Steps

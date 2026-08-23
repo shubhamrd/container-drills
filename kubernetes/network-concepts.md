@@ -1,6 +1,6 @@
 # Network Concepts
 
-## Non-Technical Example
+## Real World Analogy
 Network concepts in Kubernetes are like understanding how information flows through a large corporation's communication system.
 
 Think of it like:
@@ -17,7 +17,7 @@ In a corporation:
 4. **Privileged Access**: Senior executives have special communication access
 5. **Data Protection**: Sensitive conversations happen in secure locations
 
-## Technical Description
+## Technical Explanation
 Network concepts in Kubernetes represent the foundational principles governing how applications within a cluster communicate and interact with each other and external systems. These concepts form the basis of Kubernetes networking architecture.
 
 **Core Network Principles:**
@@ -40,7 +40,7 @@ Network concepts in Kubernetes represent the foundational principles governing h
 - **DNAT and SNAT**: Network address translation for external access
 - **Ingress Controllers**: Handle external HTTP/HTTPS routing
 
-## Hands-On Lab: Exploring Network Concepts
+## Lab Exercise: Exploring Network Concepts
 In this lab, you'll examine network principles in a conceptual manner.
 
 ### Lab Steps

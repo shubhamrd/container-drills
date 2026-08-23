@@ -1,6 +1,6 @@
 # Container Snapshots
 
-## Non-Technical Example
+## Real World Analogy
 Taking container snapshots is like taking a photo of your room at a specific moment in time.
 
 Imagine you:
@@ -17,7 +17,7 @@ In Docker, a container snapshot is more accurately called a "commit" - it captur
 
 Unlike a simple photo, this "snapshot" becomes an immutable template that represents your exact container configuration.
 
-## Technical Description
+## Technical Explanation
 Container snapshots in Docker are created using the `docker commit` command, which takes an existing running container and converts it into a new Docker image. This creates a new image with all the modifications from the container's filesystem at the time of the commit.
 
 Key aspects of container snapshots:
@@ -29,7 +29,7 @@ Key aspects of container snapshots:
 
 Snapshotting is sometimes confused with container checkpoints or Docker's built-in image rebuilding, but it's specifically about capturing a running container's state as a new image. The typical use case is when you made manual changes to a container that you want to preserve as a reusable image.
 
-## Hands-On Lab: Create Container Snapshots (Commits)
+## Lab Exercise: Create Container Snapshots (Commits)
 In this lab, you'll explore how to create and use container snapshots.
 
 ### Lab Steps

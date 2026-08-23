@@ -1,6 +1,6 @@
 # Monitoring Cluster Components
 
-## Non-Technical Example
+## Real World Analogy
 Monitoring cluster components in Kubernetes is like having a comprehensive dashboard for a busy airport control tower.
 
 Think of it like:
@@ -17,7 +17,7 @@ In airport operations:
 4. **Emergency Protocols**: Clear procedures for handling unexpected situations
 5. **Performance Optimization**: Continuous improvement based on data analysis
 
-## Technical Description
+## Technical Explanation
 Monitoring cluster components in Kubernetes involves observing, measuring, and analyzing the health and performance of all core cluster elements to ensure optimal operation and quick problem detection. This system provides visibility into the cluster's state and performance characteristics.
 
 **Core Monitoring Components:**
@@ -47,7 +47,7 @@ Monitoring cluster components in Kubernetes involves observing, measuring, and a
 - **Notification Channels**:多种信息传递方式 (Email, Slack, Pager Duty)
 - **Silencing**: Temporarily disable alerts for planned maintenance
 
-## Hands-On Lab: Cluster Component Monitoring Concepts
+## Lab Exercise: Cluster Component Monitoring Concepts
 In this lab, you'll explore monitoring concepts without actually implementing monitoring systems.
 
 ### Lab Steps

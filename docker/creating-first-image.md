@@ -1,6 +1,6 @@
 # Creating First Image
 
-## Non-Technical Example
+## Real World Analogy
 Creating your first Docker image is like baking your own custom cake mix from scratch.
 
 When you buy a cake mix from the store, it comes already packaged with all the ingredients in specific proportions (flour, sugar, eggs, etc.). But creating your own cake mix is like:
@@ -12,7 +12,7 @@ When you buy a cake mix from the store, it comes already packaged with all the i
 
 Just like your homemade cake mix can be used multiple times to bake cakes, your Docker image can be used to create countless identical containers - all perfectly shaped the way you designed when you "baked" the image.
 
-## Technical Description
+## Technical Explanation
 Creating a Docker image involves defining a Dockerfile that contains instructions for building an image. A Dockerfile is essentially a script that describes:
 - Which base image to start with (FROM instruction)
 - What files to copy into the image (COPY instruction)
@@ -29,7 +29,7 @@ The process of creating an image involves:
 
 Images can be pushed to repositories like Docker Hub for sharing and storage, or kept locally for development purposes.
 
-## Hands-On Lab: Create Your First Custom Docker Image
+## Lab Exercise: Create Your First Custom Docker Image
 In this lab, you'll build a simple custom image using a Dockerfile.
 
 ### Lab Steps

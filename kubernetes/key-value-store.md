@@ -1,6 +1,6 @@
 # Persistent Key Value Store
 
-## Non-Technical Example
+## Real World Analogy
 A persistent key-value store in Kubernetes is like having a comprehensive filing system that remembers information automatically.
 
 Think of it like:
@@ -17,7 +17,7 @@ In information management:
 4. **Reliable Storage**: Information never gets lost or corrupted
 5. **Quick Retrieval**: Answers are available instantly when needed
 
-## Technical Description
+## Technical Explanation
 A persistent key-value store in Kubernetes provides a reliable, distributed storage system for managing configuration data, secrets, and metadata for applications. This is essential for maintaining application state and configuration across pod lifecycles and cluster operations.
 
 **Core Functionality:**
@@ -47,7 +47,7 @@ A persistent key-value store in Kubernetes provides a reliable, distributed stor
 - **Backup and Restore**: Data recovery capabilities
 - **Consistency Guarantees**: ACID properties where applicable
 
-## Hands-On Lab: Key-Value Store Concepts and Architecture
+## Lab Exercise: Key-Value Store Concepts and Architecture
 In this lab, you'll explore persistent key-value storage concepts without implementing actual systems.
 
 ### Lab Steps

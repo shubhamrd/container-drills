@@ -1,6 +1,6 @@
 # Rolling Updates and Rollbacks
 
-## Non-Technical Example
+## Real World Analogy
 Rolling updates and rollbacks in Kubernetes are like performing renovations on a building while keeping it occupied.
 
 Think of it like:
@@ -15,7 +15,7 @@ In this scenario:
 3. **During Rollback**: If something went wrong, rooms revert to their previous state
 4. **Completion**: The building operates with all new improvements
 
-## Technical Description
+## Technical Explanation
 Rolling updates and rollbacks are essential deployment strategies in Kubernetes that ensure applications remain available during upgrades and can recover from failed deployments.
 
 **Rolling Update Process:**
@@ -38,7 +38,7 @@ Rolling updates and rollbacks are essential deployment strategies in Kubernetes 
 - **Strategy Selection**: Choose between RollingUpdate, Recreate, etc.
 - **Health Probes**: Configurable readiness and liveness probes
 
-## Hands-On Lab: Implementing Rolling Updates and Rollbacks
+## Lab Exercise: Implementing Rolling Updates and Rollbacks
 In this lab, you'll practice with rolling updates and rollback operations.
 
 ### Lab Steps  

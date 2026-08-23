@@ -1,6 +1,6 @@
 # Application Monitoring
 
-## Non-Technical Example
+## Real World Analogy
 Application monitoring in Kubernetes is like having a comprehensive wellness dashboard for managing a complex business venture.
 
 Think of it like:
@@ -17,7 +17,7 @@ In business management:
 4. **Performance Benchmarking**: Comparing current metrics against historical performance
 5. **Strategic Planning**: Using insights to plan future business initiatives
 
-## Technical Description
+## Technical Explanation
 Application monitoring in Kubernetes provides visibility into the health, performance, and behavior of containerized applications running within the cluster. This monitoring goes beyond infrastructure metrics to focus specifically on application-level concerns and business outcomes.
 
 **Application Monitoring Dimensions:**
@@ -48,7 +48,7 @@ Application monitoring in Kubernetes provides visibility into the health, perfor
 - **ELK Stack**: Log aggregation and analysis
 - **Sidecar Pattern**: Instrumentation containers alongside applications
 
-## Hands-On Lab: Application Monitoring Concepts and Implementation
+## Lab Exercise: Application Monitoring Concepts and Implementation
 In this lab, you'll explore application monitoring concepts without implementing actual monitoring systems.
 
 ### Lab Steps

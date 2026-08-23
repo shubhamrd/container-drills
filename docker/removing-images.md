@@ -1,6 +1,6 @@
 # Removing Images
 
-## Non-Technical Example
+## Real World Analogy
 Removing Docker images is like decluttering your closet by getting rid of clothes you no longer wear.
 
 Think of it like:
@@ -17,7 +17,7 @@ In wardrobe management:
 4. **Maintenance**: Regularly review inventory to keep things organized
 5. **Sustainability**: Being mindful about what you keep and dispose of properly
 
-## Technical Description
+## Technical Explanation
 Docker image removal is a crucial part of container management that helps maintain system cleanliness and optimize storage space. Docker images can take up considerable disk space, especially in development environments with frequent builds and updates.
 
 Key aspects of removing images:
@@ -32,7 +32,7 @@ Docker images consist of layers and can be referenced by:
 - **Repository:Tag** (like nginx:latest)
 - **Digest** (used for content-addressable identification)
 
-## Hands-On Lab: Cleaning Up Docker Images
+## Lab Exercise: Cleaning Up Docker Images
 In this lab, you'll practice different approaches to remove Docker images safely.
 
 ### Lab Steps

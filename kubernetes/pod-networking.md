@@ -1,6 +1,6 @@
 # Pod Networking
 
-## Non-Technical Example
+## Real World Analogy
 Pod networking in Kubernetes is like setting up direct communication between rooms in a hotel.
 
 Think of it like:
@@ -17,7 +17,7 @@ In a hotel:
 4. **Hotel management** can set up communication protocols (network policies)
 5. **Emergency services** can reach any guest (services routing)
 
-## Technical Description
+## Technical Explanation
 Pod networking in Kubernetes ensures that pods can communicate directly with each other and with external services. This forms the foundation of all Kubernetes network operations.
 
 **Key Principles:**
@@ -40,7 +40,7 @@ Pod networking in Kubernetes ensures that pods can communicate directly with eac
 - **Service CIDR**: Address space for cluster services
 - **IP Range Management**: Efficient allocation and reuse of addresses
 
-## Hands-On Lab: Understanding Pod Networking
+## Lab Exercise: Understanding Pod Networking
 In this lab, you'll explore pod networking concepts.
 
 ### Lab Steps

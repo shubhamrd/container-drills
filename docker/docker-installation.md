@@ -1,6 +1,6 @@
 # Docker Installation
 
-## Non-Technical Example
+## Real World Analogy
 Installing Docker is like setting up a new kitchen appliance - it's similar to installing any complex software, but it's quite straightforward once you follow the proper steps.
 
 Think of Docker as a sophisticated appliance that cooks your applications in special containers. Just like you need to:
@@ -18,7 +18,7 @@ Similarly, installing Docker involves:
 5. Starting and enabling the service for automatic startup
 6. Testing that everything works correctly
 
-## Technical Description
+## Technical Explanation
 Docker Installation follows a standardized process that varies slightly depending on your Linux distribution. The general process involves:
 
 1. **Prerequisites**: Your system should have a supported kernel version (Linux kernel 3.10 or higher)
@@ -29,7 +29,7 @@ Docker Installation follows a standardized process that varies slightly dependin
 
 Docker installation requires proper system requirements and careful dependency management. It's important to use official repositories and follow the documented installation procedure to avoid conflicts.
 
-## Hands-On Lab: Complete Docker Installation Process
+## Lab Exercise: Complete Docker Installation Process
 In this comprehensive lab, you'll install Docker from scratch following industry-standard procedures.
 
 ### Lab Steps

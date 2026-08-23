@@ -1,6 +1,6 @@
 # Resource Limits and Scheduling
 
-## Non-Technical Example
+## Real World Analogy
 Resource limits and scheduling in Kubernetes is like managing a construction site with limited workers and materials.
 
 Think of it like:
@@ -17,7 +17,7 @@ In construction management:
 4. **Over-subscription Prevention**: Ensuring no projects run over capacity
 5. **Adaptation to Changes**: Adjusting resource allocation when priorities change
 
-## Technical Description
+## Technical Explanation
 Resource limits and scheduling in Kubernetes involve managing computational resources (CPU, memory) to ensure efficient cluster utilization and predictable application performance.
 
 **Resource Management:**
@@ -38,7 +38,7 @@ Resource limits and scheduling in Kubernetes involve managing computational reso
 - **Node Constraints**: Specific requirements like hardware or location
 - **Priority-based Scheduling**: High-priority workloads get resources first
 
-## Hands-On Lab: Resource Management and Scheduling
+## Lab Exercise: Resource Management and Scheduling
 In this lab, you'll explore resource allocation and scheduling concepts.
 
 ### Lab Steps

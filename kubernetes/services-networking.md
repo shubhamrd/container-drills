@@ -1,6 +1,6 @@
 # Services and Network Primitives
 
-## Non-Technical Example
+## Real World Analogy
 Services and network primitives in Kubernetes are like the city's postal system and communication network.
 
 Imagine:
@@ -21,7 +21,7 @@ In Kubernetes:
 - Pods are like the actual businesses producing the work
 - Networking primitives ensure reliable communication between these components
 
-## Technical Description
+## Technical Explanation
 Services in Kubernetes provide stable network endpoints (IP addresses and DNS names) for accessing pods. Services abstract the underlying dynamically allocated pod IPs through:
 - **ClusterIP**: Exposes the service on a cluster-internal IP
 - **NodePort**: Exposes the service on each node's IP at a static port
@@ -36,7 +36,7 @@ Key networking concepts:
 
 The service abstraction is essential because pods are ephemeral - they can die and be recreated, getting new IPs in the process.
 
-## Hands-On Lab: Creating and Using Services
+## Lab Exercise: Creating and Using Services
 In this lab, you'll create and test different types of services.
 
 ### Lab Steps

@@ -1,6 +1,6 @@
 # Network Load Balancer
 
-## Non-Technical Example
+## Real World Analogy
 Network load balancing in Kubernetes is like having a traffic coordinator at a busy highway intersection.
 
 Think of it like:
@@ -17,7 +17,7 @@ In traffic management:
 4. **Capacity Optimization**: Increasing capacity during busy times
 5. **Failure Handling**: When a lane is closed, vehicles are seamlessly redirected
 
-## Technical Description
+## Technical Explanation
 Network Load Balancing in Kubernetes involves distributing network traffic across multiple backend services or pods to optimize resource utilization, maximize throughput, and minimize response time. This is essential for high-availability and scalable applications.
 
 **Load Balancing Types:**
@@ -39,7 +39,7 @@ Network Load Balancing in Kubernetes involves distributing network traffic acros
 - **SSL Termination**: Decrypt HTTPS traffic at load balancer
 - **Geographic Distribution**: Route to nearest geographic endpoint
 
-## Hands-On Lab: Load Balancer Concepts and Implementation
+## Lab Exercise: Load Balancer Concepts and Implementation
 In this lab, you'll explore load balancing concepts without executing full implementations.
 
 ### Lab Steps

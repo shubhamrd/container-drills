@@ -1,11 +1,11 @@
 # Introduction to Docker
 
-## Non-Technical Example
+## Real World Analogy
 Think of Docker like a shipping container. Just as a shipping container allows you to pack all your belongings (clothes, electronics, books) into a single, standardized unit that can be easily transported from one place to another without worrying about the contents getting damaged or mixed up, Docker packages up your application and all its dependencies (libraries, configuration files, etc.) into a single, standardized unit called a "container."
 
 When you ship a container, you can move it from your warehouse to a ship, then to a train, and finally to the destination port - all without having to unpack and repack everything. Similarly, Docker containers can be moved between different machines and environments while keeping everything exactly the same, ensuring your application runs identically regardless of where it's deployed.
 
-## Technical Description
+## Technical Explanation
 Docker is an open-source platform that enables developers to automate the deployment, scaling, and management of applications using containerization technology. Docker containers are lightweight, portable, and consistent environments that encapsulate an application and its dependencies, ensuring that the software runs reliably when moved from one computing environment to another.
 
 A Docker container is created from a Docker image, which is a read-only template with instructions for creating a container. Containers are isolated from each other and from the host system, providing security and consistency. Containers share the host OS kernel but run in their own user space, making them more efficient than traditional virtual machines.
@@ -16,7 +16,7 @@ Docker's core components include:
 - **Docker Containers**: Runnable instances of Docker images
 - **Docker Registry**: A storage and distribution system for Docker images (like Docker Hub)
 
-## Hands-On Lab: Docker Installation
+## Lab Exercise: Docker Installation
 In this lab, you'll install Docker on your system and verify the installation was successful.
 
 ### Prerequisites

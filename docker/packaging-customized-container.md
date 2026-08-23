@@ -1,6 +1,6 @@
 # Packaging Customized Container
 
-## Non-Technical Example
+## Real World Analogy
 Packaging a customized container is like assembling a custom-built furniture kit. 
 
 Just as you might take a basic wooden frame (base image) and add specific components like a drawer, shelves, or decorative elements to meet your exact needs, packaging a customized container involves:
@@ -12,7 +12,7 @@ Just as you might take a basic wooden frame (base image) and add specific compon
 
 Each customized package has a specific purpose, just like each assembly has a specific function. You can create many variations of different packages based on different requirements, but they all start from the same basic components.
 
-## Technical Description
+## Technical Explanation
 Packaging a customized container involves creating a Docker image that includes all the necessary components and configurations for a specific application. This process allows for:
 - Customizing base operating systems with specific software and dependencies
 - Bundling pre-configured applications with their runtime environments
@@ -29,7 +29,7 @@ Key aspects of custom container packaging:
 
 The Dockerfile is the blueprint that defines how the container should be built, including the base image, installations, configurations, and run commands.
 
-## Hands-On Lab: Package a Custom Web Application Container
+## Lab Exercise: Package a Custom Web Application Container
 In this lab, you'll create a customized container for a simple web application.
 
 ### Lab Steps

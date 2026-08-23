@@ -1,6 +1,6 @@
 # Security Contexts
 
-## Non-Technical Example
+## Real World Analogy
 Security contexts in Kubernetes are like designing individual security protocols for different types of employees in a company.
 
 Think of it like:
@@ -17,7 +17,7 @@ In corporate security:
 4. **Department Separation**: Different areas have different security controls
 5. **Custom Equipment**: Special tools for handling sensitive work
 
-## Technical Description
+## Technical Explanation
 Security contexts in Kubernetes provide a way to specify security settings for individual containers and pods at the granular level. These contexts define how containers should behave in terms of privileges, capabilities, and access restrictions, offering fine-grained control over container security behavior.
 
 **Key Security Context Elements:**
@@ -48,7 +48,7 @@ Security contexts in Kubernetes provide a way to specify security settings for i
 - **Filesystem Restrictions**: Limit filesystem modifications
 - **Resource Limits**: Control resource consumption
 
-## Hands-On Lab: Security Context Concepts and Configuration
+## Lab Exercise: Security Context Concepts and Configuration
 In this lab, you'll explore security contexts without implementing actual container security.
 
 ### Lab Steps

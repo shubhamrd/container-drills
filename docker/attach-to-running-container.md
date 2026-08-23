@@ -1,6 +1,6 @@
 # Attach to a Running Container
 
-## Non-Technical Example
+## Real World Analogy
 Attaching to a running container is like peeking into a room while someone is already inside and working, without disturbing their work.
 
 Think of it like:
@@ -11,7 +11,7 @@ Think of it like:
 
 In a practical sense, instead of knocking on the door, you're checking the windows or listening at the door to know what's happening without disrupting the ongoing activity.
 
-## Technical Description
+## Technical Explanation
 Attaching to a running container in Docker allows you to obtain an interactive terminal session with an already running container. This is particularly useful for:
 - Debugging applications that are currently running
 - Monitoring container processes and services
@@ -20,7 +20,7 @@ Attaching to a running container in Docker allows you to obtain an interactive t
 
 The `docker attach` command connects to the container's main process, unlike `docker exec` which runs a new command. This is especially useful when your container process is the main application and it's running an interactive terminal (like a shell).
 
-## Hands-On Lab: Attaching to Running Containers
+## Lab Exercise: Attaching to Running Containers
 In this lab, you'll practice attaching to running containers and interacting with them.
 
 ### Lab Steps

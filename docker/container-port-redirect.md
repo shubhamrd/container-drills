@@ -1,6 +1,6 @@
 # Container Port Redirect
 
-## Non-Technical Example
+## Real World Analogy
 Container port redirection is like having a hotel switchboard operator. 
 
 In a hotel:
@@ -14,7 +14,7 @@ In a hotel:
 
 This is exactly how container port redirection works - Docker acts as the hotel switchboard operator, routing requests from your host machine to the specific ports inside containers.
 
-## Technical Description
+## Technical Explanation
 Container port redirection (also called port mapping) allows you to expose ports from containers to the host machine. By default, containers run in isolation and their internal ports are not accessible from the host environment.
 
 The mapping process uses the syntax: `-p [host_port]:[container_port]` where:
@@ -32,7 +32,7 @@ Port redirection is essential for:
 - Database connections from host applications
 - API services exposed to external consumers
 
-## Hands-On Lab: Expose and Redirect Container Ports
+## Lab Exercise: Expose and Redirect Container Ports
 In this lab, you'll set up port redirection to access container applications from your host machine.
 
 ### Lab Steps

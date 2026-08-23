@@ -1,6 +1,6 @@
 # Dockerfile
 
-## Non-Technical Example
+## Real World Analogy
 A Dockerfile is like a cookbook recipe that anyone can follow to create the exact same dish.
 
 Think of it like:
@@ -17,7 +17,7 @@ In cooking:
 4. **Quality Standards**: Ensuring each dish meets the same taste and texture expectations
 5. **Reuse Protocol**: Same recipe can be followed by anyone to get identical results
 
-## Technical Description
+## Technical Explanation
 A Dockerfile is a text file that contains a series of instructions telling Docker how to build an image. It's the blueprint for creating container images and ensures reproducibility and consistency across different environments.
 
 **Key Dockerfile Instructions:**
@@ -39,7 +39,7 @@ Best practices for Dockerfile creation:
 - **Minimalism**: Keep images small and focused
 - **Reproducibility**: Consistent builds across environments
 
-## Hands-On Lab: Create and Build a Custom Dockerfile
+## Lab Exercise: Create and Build a Custom Dockerfile
 In this lab, you'll create and test different types of Dockerfiles.
 
 ### Lab Steps

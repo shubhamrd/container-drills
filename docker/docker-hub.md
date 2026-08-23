@@ -1,6 +1,6 @@
 # The Docker Hub
 
-## Non-Technical Example
+## Real World Analogy
 Think of Docker Hub like a massive online bookstore, but instead of selling books, it sells "software packages" that are ready to use - called Docker images.
 
 Just as a bookstore has sections for fiction, non-fiction, sci-fi, romance, etc., Docker Hub organizes images into categories:
@@ -20,7 +20,7 @@ In Docker Hub, you can:
 - Find community-maintained images  
 - Use official images that Docker has vetted and tested
 
-## Technical Description
+## Technical Explanation
 Docker Hub is Docker's official registry and cloud service for storing and managing Docker images. It's the largest public repository of Docker images and the default location where Docker looks for images when you use the `docker pull` command.
 
 Key aspects of Docker Hub include:
@@ -38,7 +38,7 @@ Docker Hub provides a centralized location for Docker images, enabling:
 - Automation of image builds from source code
 - Security features like vulnerability scanning
 
-## Hands-On Lab: Exploring Docker Hub and Pulling Images
+## Lab Exercise: Exploring Docker Hub and Pulling Images
 In this lab, you'll practice working with Docker Hub to find and use images.
 
 ### Lab Steps

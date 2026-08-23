@@ -1,6 +1,6 @@
 # Understand Directory Structure
 
-## Non-Technical Example
+## Real World Analogy
 Understanding Docker directory structure is like learning how to read a map of a well-organized library.
 
 Think of it like:
@@ -17,7 +17,7 @@ In library management:
 4. **Storage Capacity**: Recognizing how much space is available for different materials
 5. **Maintenance Protocols**: Knowing which areas require special care or regular attention
 
-## Technical Description
+## Technical Explanation
 The directory structure in Docker relates to how containerized applications manage file systems and data. Understanding Docker's filesystem structure helps with:
 - Volume management and data persistence
 - File permissions and access control
@@ -41,7 +41,7 @@ The directory structure in Docker relates to how containerized applications mana
 - **/usr/**: User utilities and applications
 - **/home/**: User home directories
 
-## Hands-On Lab: Explore Docker Filesystem Structure
+## Lab Exercise: Explore Docker Filesystem Structure
 In this lab, you'll examine the directory structure of Docker containers.
 
 ### Lab Steps

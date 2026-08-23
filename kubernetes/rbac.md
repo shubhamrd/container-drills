@@ -1,6 +1,6 @@
 # Role-Based Access Control
 
-## Non-Technical Example
+## Real World Analogy
 Role-Based Access Control (RBAC) in Kubernetes is like implementing a comprehensive employee access management system for a large corporation.
 
 Think of it like:
@@ -17,7 +17,7 @@ In corporate management:
 4. **Security Accountability**: Clear tracking of who has access to sensitive information
 5. **Regular Review Process**: Periodic checks to ensure access is still appropriate
 
-## Technical Description
+## Technical Explanation
 Role-Based Access Control (RBAC) in Kubernetes provides a fine-grained authorization mechanism that determines what actions authenticated users or service accounts can perform on cluster resources. It organizes permissions into roles and binds them to subjects based on their roles.
 
 **Core RBAC Components:**
@@ -40,7 +40,7 @@ Role-Based Access Control (RBAC) in Kubernetes provides a fine-grained authoriza
 - **Compliance Ready**: Meet regulatory requirements for access control
 - **Dynamic Modification**: Easy to adapt permissions as roles change
 
-## Hands-On Lab: RBAC Concepts and Configuration
+## Lab Exercise: RBAC Concepts and Configuration
 In this lab, you'll study RBAC concepts without implementing actual access control.
 
 ### Lab Steps

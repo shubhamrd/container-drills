@@ -1,6 +1,6 @@
 # Persistent Volumes
 
-## Non-Technical Example
+## Real World Analogy
 Persistent Volumes in Kubernetes are like having a garage that stores your belongings permanently, regardless of whether you're using your car or not.
 
 Think of it like:
@@ -17,7 +17,7 @@ In real-life storage:
 4. **Protection**: Important items are stored safely from damage
 5. **Scalability**: You can add more storage if needed for growing needs
 
-## Technical Description
+## Technical Explanation
 Persistent Volumes (PVs) in Kubernetes provide a way to manage storage for containerized applications that persists beyond the lifecycle of individual pods. They abstract the storage details from the applications, allowing for flexible storage provisioning and management.
 
 **Core Concepts:**
@@ -40,7 +40,7 @@ Persistent Volumes (PVs) in Kubernetes provide a way to manage storage for conta
 - **Network Storage**: NFS, iSCSI, Fiber Channel
 - **Distributed Storage**: GlusterFS, CephFS
 
-## Hands-On Lab: Persistent Volume Concepts and Management
+## Lab Exercise: Persistent Volume Concepts and Management
 In this lab, you'll explore persistent volumes conceptually.
 
 ### Lab Steps

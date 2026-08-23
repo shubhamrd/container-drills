@@ -1,6 +1,6 @@
 # Pushing Images to Docker Hub
 
-## Non-Technical Example
+## Real World Analogy
 Pushing Docker images to Docker Hub is like uploading your finished artwork to an online gallery for others to view and download.
 
 Think of it like:
@@ -17,7 +17,7 @@ In creative sharing:
 4. **Community Engagement**: Allowing others to build upon or use your work
 5. **Portfolio Growth**: Building a collection of works that show your evolution
 
-## Technical Description
+## Technical Explanation
 Pushing Docker images to Docker Hub involves publishing your container images so others can download, use, and run them. This is crucial for collaboration, distribution, and sharing containerized applications.
 
 **Key Concepts:**
@@ -41,7 +41,7 @@ Pushing Docker images to Docker Hub involves publishing your container images so
 - **Security**: Use private repositories for sensitive applications
 - **Optimization**: Keep image sizes reasonable for efficient distribution
 
-## Hands-On Lab: Pushing Images to Docker Hub
+## Lab Exercise: Pushing Images to Docker Hub
 In this lab, you'll learn the complete process of publishing Docker images.
 
 ### Lab Steps

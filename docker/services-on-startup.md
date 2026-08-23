@@ -1,6 +1,6 @@
 # Services - on Startup
 
-## Non-Technical Example
+## Real World Analogy
 Services-on-startup in Docker is like having a smart home automation system where appliances start automatically when power is restored.
 
 Think of it like:
@@ -17,7 +17,7 @@ In smart home automation:
 4. **Resource Management**: Optimizing when services start for efficiency
 5. **Monitoring**: Knowing when systems are running or have been activated
 
-## Technical Description
+## Technical Explanation
 Services-on-startup in Docker refers to how containerized applications can be configured to run or initialize specific services when a container starts up. This is essential for:
 - Preparing application environments
 - Running initialization scripts
@@ -39,7 +39,7 @@ Docker handles startup through:
 - **Environment variable preparation**
 - **Volume and network initialization**
 
-## Hands-On Lab: Configure Startup Services
+## Lab Exercise: Configure Startup Services
 In this lab, you'll create a container with multiple startup services.
 
 ### Lab Steps

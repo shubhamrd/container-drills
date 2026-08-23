@@ -1,6 +1,6 @@
 # Security Primitives
 
-## Non-Technical Example
+## Real World Analogy
 Security primitives in Kubernetes are like having a comprehensive toolkit of safety measures for a modern skyscraper.
 
 Think of it like:
@@ -17,7 +17,7 @@ In building security:
 4. **Continuous Improvement**: Security measures evolve with new threats
 5. **Standard Operating Procedures**: Everyone follows established protocols
 
-## Technical Description
+## Technical Explanation
 Security primitives in Kubernetes represent the foundational security mechanisms and features that work together to protect containerized applications and infrastructure. These primitives form the building blocks of Kubernetes security architecture.
 
 **Core Security Components:**
@@ -48,7 +48,7 @@ Security primitives in Kubernetes represent the foundational security mechanisms
 - **Platform Security**: Infrastructure-level protections
 - **Compliance Frameworks**: Industry standard security alignment
 
-## Hands-On Lab: Security Primitive Concepts and Integration
+## Lab Exercise: Security Primitive Concepts and Integration
 In this lab, you'll study security primitives without implementing actual protections.
 
 ### Lab Steps

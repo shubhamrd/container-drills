@@ -1,6 +1,6 @@
 # Adding External Content
 
-## Non-Technical Example
+## Real World Analogy
 Adding external content to Docker containers is like importing files into a digital library from various sources.
 
 Think of it like:
@@ -17,7 +17,7 @@ In digital library management:
 4. **Version Control**: Managing updates and changes to imported materials
 5. **Integration Process**: Making sure new content works seamlessly with existing resources
 
-## Technical Description
+## Technical Explanation
 Adding external content to Docker containers involves copying files from the host system or external sources into container filesystems. This is essential for:
 - Providing application configuration files
 - Adding static assets (images, CSS, JavaScript)
@@ -39,7 +39,7 @@ Adding external content to Docker containers involves copying files from the hos
 - **Layer Optimization**: Place frequently changing files in later layers
 - **Environment Specific**: Use multi-stage builds for different environments
 
-## Hands-On Lab: Adding Various Content Types
+## Lab Exercise: Adding Various Content Types
 In this lab, you'll learn different methods for adding external content to containers.
 
 ### Lab Steps

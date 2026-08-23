@@ -1,6 +1,6 @@
 # Label Selectors and DaemonSets
 
-## Non-Technical Example
+## Real World Analogy
 Label selectors and DaemonSets in Kubernetes are like managing a fleet of delivery trucks with different specialized functions.
 
 Think of it like:
@@ -15,7 +15,7 @@ In the delivery system:
 3. **Universal Coverage**: Every delivery location gets a street sweeping truck regardless of size
 4. **Flexible Assignment**: You can reassign trucks based on changing demands
 
-## Technical Description
+## Technical Explanation
 Label selectors and DaemonSets are powerful features in Kubernetes that provide precise control over where workloads are scheduled and managed across a cluster.
 
 **Labels and Selectors:**
@@ -35,7 +35,7 @@ Label selectors and DaemonSets are powerful features in Kubernetes that provide 
 - **Set-based Selectors**: Check for existence of keys, membership in sets
 - **Combined Selections**: Multiple criteria for complex targeting
 
-## Hands-On Lab: Working with Labels, Selectors, and DaemonSets
+## Lab Exercise: Working with Labels, Selectors, and DaemonSets
 In this lab, you'll experiment with labeling, selecting, and daemon sets.
 
 ### Lab Steps

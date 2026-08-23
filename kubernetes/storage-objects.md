@@ -1,6 +1,6 @@
 # Kubernetes Storage Objects
 
-## Non-Technical Example
+## Real World Analogy
 Kubernetes storage objects are like having a comprehensive filing system for a law firm that manages different types of client documents and evidence.
 
 Think of it like:
@@ -17,7 +17,7 @@ In a law firm:
 4. **Retrieval Systems**: Indexes and search capabilities for finding documents
 5. **Backup Strategies**: Duplicate storage for important cases and evidence
 
-## Technical Description
+## Technical Explanation
 Kubernetes storage objects encompass the various components that provide storage solutions for containerized applications, including PersistentVolumes, PersistentVolumeClaims, StorageClasses, and related constructs. These objects work together to provide a robust storage management framework.
 
 **Primary Storage Objects:**
@@ -47,7 +47,7 @@ Kubernetes storage objects encompass the various components that provide storage
 - **Security Controls**: Encryption and access control mechanisms
 - **Backup and Recovery**: Snapshot and restore capabilities
 
-## Hands-On Lab: Storage Object Concepts and Relationships
+## Lab Exercise: Storage Object Concepts and Relationships
 In this lab, you'll explore the relationships between storage objects without implementing actual storage.
 
 ### Lab Steps

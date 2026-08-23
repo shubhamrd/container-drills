@@ -1,6 +1,6 @@
 # Helm Charts - Overview
 
-## Non-Technical Example
+## Real World Analogy
 Helm Charts in Kubernetes are like having a cookbook full of pre-written recipes for complex dishes that can be adapted and reused.
 
 Think of it like:
@@ -17,7 +17,7 @@ In culinary terms:
 4. **Quality Control**: Recipes are tested and verified for consistency
 5. **Knowledge Sharing**: Chefs can refine and improve recipes over time
 
-## Technical Description
+## Technical Explanation
 Helm Charts are Kubernetes package managers that simplify deployment of applications by packaging applications with their dependencies into consumable units. They function as "super-powered templates" for deploying applications to Kubernetes clusters.
 
 **Core Concepts:**
@@ -48,7 +48,7 @@ Helm Charts are Kubernetes package managers that simplify deployment of applicat
 - **helm list**: Show installed releases
 - **helm uninstall**: Remove application from cluster
 
-## Hands-On Lab: Helm Chart Concepts and Operations
+## Lab Exercise: Helm Chart Concepts and Operations
 In this lab, you'll explore Helm concepts without installing or deploying charts.
 
 ### Lab Steps

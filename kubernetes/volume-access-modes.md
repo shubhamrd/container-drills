@@ -1,6 +1,6 @@
 # Volume Access Modes
 
-## Non-Technical Example
+## Real World Analogy
 Volume access modes in Kubernetes are like different types of storage access permissions for a community center that houses various activities.
 
 Think of it like:
@@ -17,7 +17,7 @@ In community center operations:
 4. **Protected Zones**: Some areas require special permission to enter
 5. **Usage Rights**: Clear rules about how different people can use different spaces
 
-## Technical Description
+## Technical Explanation
 Volume access modes in Kubernetes define how a PersistentVolume can be mounted and accessed by pods. These modes specify the level of access and sharing capability for storage volumes, ensuring correct storage behavior in different scenarios.
 
 **Access Mode Types:**
@@ -42,7 +42,7 @@ Volume access modes in Kubernetes define how a PersistentVolume can be mounted a
 - **Network Storage**: Usually supports all modes but with performance impacts
 - **Distributed Storage**: Modern solutions often support all access modes
 
-## Hands-On Lab: Understanding Volume Access Modes
+## Lab Exercise: Understanding Volume Access Modes
 In this lab, you'll explore access mode concepts without implementing actual storage.
 
 ### Lab Steps

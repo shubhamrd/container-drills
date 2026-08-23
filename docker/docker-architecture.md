@@ -1,6 +1,6 @@
 # Docker Architecture
 
-## Non-Technical Example
+## Real World Analogy
 Think of Docker like a restaurant kitchen:
 
 - The **Docker Engine** is like the main kitchen where everything happens. It's the heart of the operation.
@@ -12,7 +12,7 @@ Think of Docker like a restaurant kitchen:
 
 When you want to order dinner, your waiter (client) tells the kitchen manager (daemon) about what you want. The kitchen manager finds the recipe card (image) in the library, prepares the meal following the recipe (creates the container with runtime parameters), and serves it to you.
 
-## Technical Description
+## Technical Explanation
 Docker architecture consists of several interrelated components that work together to enable containerization:
 
 **Docker Engine:**
@@ -33,7 +33,7 @@ Storage and distribution system for Docker images. The most popular public regis
 **Networks and Volumes:**
 Docker provides built-in networking capabilities for containers to communicate and storage mechanisms for persistent data.
 
-## Hands-On Lab: Understanding Docker Architecture Components
+## Lab Exercise: Understanding Docker Architecture Components
 In this exercise, you'll examine the architecture by inspecting Docker components.
 
 ### Lab Steps

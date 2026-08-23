@@ -1,6 +1,6 @@
 # Release Binaries
 
-## Non-Technical Example
+## Real World Analogy
 Release binaries in Kubernetes are like downloading officially certified software updates for a complex system.
 
 Think of it like:
@@ -16,7 +16,7 @@ In contrast to a DIY approach:
 - **Documentation**: Each release comes with release notes and upgrade documentation
 - **Support**: Official binaries have backing support and community validation
 
-## Technical Description
+## Technical Explanation
 Kubernetes release binaries are pre-built, tested distributions of the Kubernetes components. These are released on a regular schedule (approximately every 4 months) and include:
 
 **Major Components:**
@@ -41,7 +41,7 @@ Kubernetes release binaries are pre-built, tested distributions of the Kubernete
 - **Support Duration**: Major versions typically supported for ~9 months
 - **Upgrade Path**: Defined upgrade paths between versions
 
-## Hands-On Lab: Working with Kubernetes Release Binaries
+## Lab Exercise: Working with Kubernetes Release Binaries
 In this lab, you'll examine and understand the release process concepts.
 
 ### Lab Steps

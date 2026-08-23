@@ -1,6 +1,6 @@
 # Scheduler Configuration
 
-## Non-Technical Example
+## Real World Analogy
 Scheduler configuration in Kubernetes is like configuring traffic lights and road signs for a busy intersection.
 
 Think of it like:
@@ -17,7 +17,7 @@ When managing traffic:
 4. **Handle Emergencies**: Allow priority passage during incidents
 5. **Optimize Performance**: Improve flow efficiency over time
 
-## Technical Description
+## Technical Explanation
 Scheduler configuration in Kubernetes allows operators to customize the scheduling behavior of the cluster's scheduler component, determining how and where workloads are assigned to nodes. The scheduler makes decisions based on policy configurations, resource availability, and specific requirements.
 
 **Scheduler Configuration Areas:**
@@ -41,7 +41,7 @@ Scheduler configuration in Kubernetes allows operators to customize the scheduli
 - **Reservation Systems**: Reserve capacity for specific workloads
 - **Migration Policies**: Control workload movement between nodes
 
-## Hands-On Lab: Understanding Scheduler Configuration
+## Lab Exercise: Understanding Scheduler Configuration
 In this lab, you'll explore scheduler concepts and configuration options.
 
 ### Lab Steps

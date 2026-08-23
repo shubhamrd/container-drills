@@ -1,6 +1,6 @@
 # Service Networking
 
-## Non-Technical Example
+## Real World Analogy
 Service networking in Kubernetes is like having a contact center that acts as the official phone number for a business.
 
 Think of it like:
@@ -17,7 +17,7 @@ In a business setting:
 4. **Availability Management**: The contact center can handle fluctuations in call volume
 5. **Reliability**: Even if the main operators are unavailable, backup systems keep calls flowing
 
-## Technical Description
+## Technical Explanation
 Service networking in Kubernetes provides stable network endpoints for accessing applications, abstracting away the dynamic nature of individual pods. Services are the primary mechanism for exposing applications within and outside the cluster.
 
 **Service Types:**
@@ -40,7 +40,7 @@ Service networking in Kubernetes provides stable network endpoints for accessing
 - **Health Checks**: Determining which endpoints are ready to receive traffic
 - **Selector Matching**: Finding pods that match the service's label selector
 
-## Hands-On Lab: Service Networking Implementation
+## Lab Exercise: Service Networking Implementation
 In this lab, you'll implement and test various service networking approaches.
 
 ### Lab Steps

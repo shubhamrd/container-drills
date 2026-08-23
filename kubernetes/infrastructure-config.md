@@ -1,6 +1,6 @@
 # Infrastructure Configuration
 
-## Non-Technical Example
+## Real World Analogy
 Infrastructure configuration in Kubernetes is like configuring the wiring and structural elements of a house before you move in.
 
 Think of it like:
@@ -12,7 +12,7 @@ Think of it like:
 
 When you're building a house, you can't just move in with just furniture - you need the foundations, systems, and infrastructure properly configured first. Similarly, Kubernetes clusters require proper infrastructure configuration before they can be effectively deployed and managed.
 
-## Technical Description
+## Technical Explanation
 Infrastructure configuration in Kubernetes refers to the setup and tuning of underlying system parameters, network settings, storage configurations, and cluster-wide settings that affect performance, security, and operational behavior. This includes:
 
 **System-Level Configuration:**
@@ -43,7 +43,7 @@ Infrastructure configuration in Kubernetes refers to the setup and tuning of und
 - Admission controller configuration
 - Metrics gathering parameters
 
-## Hands-On Lab: Understanding Infrastructure Configuration
+## Lab Exercise: Understanding Infrastructure Configuration
 In this lab, you'll explore configuration concepts without modifying actual cluster settings.
 
 ### Lab Steps

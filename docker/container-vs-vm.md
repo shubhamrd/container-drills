@@ -1,13 +1,13 @@
 # Container vs Virtual Machines
 
-## Non-Technical Example
+## Real World Analogy
 Imagine you're trying to move your furniture from one apartment to another. 
 
 If you use **virtual machines** (VMs), it's like moving heavy furniture pieces in large moving boxes. Each box represents a complete OS (like Windows or Linux) running on a virtual machine. These boxes are very heavy and expensive to ship because they contain an entire operating system along with all its software and dependencies. Even though you're only moving a bookshelf, it comes in a big box that contains an entire OS and all software needed for that OS to run.
 
 If you use **containers**, it's like packing your furniture neatly in lightweight, specialized boxes. These boxes are much lighter because they don't contain a full operating system. Instead, they contain only the specific items you need to move. You could put a bookshelf, some clothes, and a lamp in one container, and everything is compact and easily transportable. You still share the same ground floor (host OS) with everyone else, but your boxes are much more efficient to move.
 
-## Technical Description
+## Technical Explanation
 Virtual machines and containers are both methods of isolating applications, but they achieve this in fundamentally different ways:
 
 **Virtual Machines (VMs):**
@@ -26,7 +26,7 @@ Virtual machines and containers are both methods of isolating applications, but 
 - Can run hundreds of containers on a single host
 - Faster to scale due to minimal overhead
 
-## Hands-On Lab: Compare Container vs VM Basics
+## Lab Exercise: Compare Container vs VM Basics
 This lab isn't meant to demonstrate the full differences, but to understand the basic container concept with Docker.
 
 ### Lab Steps

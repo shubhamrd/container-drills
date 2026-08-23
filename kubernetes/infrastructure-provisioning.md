@@ -1,6 +1,6 @@
 # Infrastructure Provisioning
 
-## Non-Technical Example
+## Real World Analogy
 Infrastructure provisioning in Kubernetes is like planning and constructing a city before filling it with residents.
 
 Think of it like:
@@ -18,7 +18,7 @@ In Kubernetes:
 - **Automation**: Like using prefabricated building components that snap together
 - **Templates**: Like having proven architectural blueprints that work everywhere
 
-## Technical Description
+## Technical Explanation
 Infrastructure provisioning for Kubernetes refers to the process of setting up the underlying computing resources and network infrastructure required to run a Kubernetes cluster. This can be done in multiple ways:
 
 **Cloud Provider Provisioning:**
@@ -46,7 +46,7 @@ Infrastructure provisioning for Kubernetes refers to the process of setting up t
 - Load balancing capabilities
 - Backup and disaster recovery systems
 
-## Hands-On Lab: Understanding Infrastructure Provisioning Concepts
+## Lab Exercise: Understanding Infrastructure Provisioning Concepts
 In this lab, you'll explore the concepts of infrastructure provisioning without actually building a cluster.
 
 ### Lab Steps

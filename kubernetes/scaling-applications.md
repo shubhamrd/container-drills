@@ -1,6 +1,6 @@
 # Scaling Applications
 
-## Non-Technical Example
+## Real World Analogy
 Scaling applications in Kubernetes is like managing a concert venue where you adjust the number of staff and resources based on audience size.
 
 Think of it like:
@@ -17,7 +17,7 @@ When managing an event:
 4. **Scale Down**: Reduce resources when attendance decreases
 5. **Prepare for Peaks**: Have extra capacity ready for anticipated busy periods
 
-## Technical Description
+## Technical Explanation
 Scaling applications in Kubernetes involves adjusting the number of running instances (replicas) of your applications to match demand. This process can be manual or automated through various scaling mechanisms.
 
 **Scaling Types:**
@@ -45,7 +45,7 @@ Scaling applications in Kubernetes involves adjusting the number of running inst
 - **Scaling Ratios**: How aggressively to scale up/down
 - **Predictive Scaling**: Using historical patterns for anticipation
 
-## Hands-On Lab: Application Scaling Operations
+## Lab Exercise: Application Scaling Operations
 In this lab, you'll practice different scaling scenarios.
 
 ### Lab Steps

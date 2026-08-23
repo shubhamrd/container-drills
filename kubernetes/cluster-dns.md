@@ -1,6 +1,6 @@
 # Cluster DNS
 
-## Non-Technical Example
+## Real World Analogy
 Cluster DNS in Kubernetes is like having a comprehensive phone book and directory service for a large corporation.
 
 Think of it like:
@@ -17,7 +17,7 @@ In corporate communication:
 4. **Hierarchical Organization**: Departments and teams are clearly organized
 5. **Reliability**: The directory never goes down and is always accessible
 
-## Technical Description
+## Technical Explanation
 Cluster DNS in Kubernetes provides DNS-based service discovery within the cluster, enabling pods to find and communicate with each other by name rather than IP address. This is a critical component of Kubernetes networking architecture.
 
 **DNS Service Naming Convention:**
@@ -45,7 +45,7 @@ Cluster DNS in Kubernetes provides DNS-based service discovery within the cluste
 - **Caching**: DNS cache improves lookup performance
 - **Service Discovery**: Enables decoupled application communication
 
-## Hands-On Lab: Cluster DNS Operations and Testing
+## Lab Exercise: Cluster DNS Operations and Testing
 In this lab, you'll explore DNS functionality in Kubernetes without deep implementation.
 
 ### Lab Steps

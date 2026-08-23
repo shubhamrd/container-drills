@@ -1,6 +1,6 @@
 # Kubernetes Introduction
 
-## Non-Technical Example
+## Real World Analogy
 Think of Kubernetes like a traffic controller for a busy city intersection. 
 
 Just as a traffic controller manages multiple cars, pedestrians, and cyclists at an intersection, Kubernetes manages multiple applications (called workloads) running on many computers (nodes) in a cluster. 
@@ -18,7 +18,7 @@ Similarly, Kubernetes orchestrates your applications by:
 - **Managing updates without downtime**
 - **Handling network communication** between applications
 
-## Technical Description
+## Technical Explanation
 Kubernetes (also known as K8s) is an open-source container orchestration platform designed to automate deployment, scaling, and management of containerized applications across clusters of hosts. 
 
 The name Kubernetes comes from the Greek word for "helmsman" or "pilot," reflecting its role in steering complex containerized applications. It provides a robust framework for automating deployment, scaling, and operations of application containers across clusters of hosts.
@@ -31,7 +31,7 @@ Key Kubernetes concepts include:
 - **Deployment**: A declaration of desired state for pods and replicas
 - **Namespace**: A way to divide cluster resources between multiple users or projects
 
-## Hands-On Lab: Creating Your First Pod
+## Lab Exercise: Creating Your First Pod
 In this lab, you'll deploy your first Kubernetes pod.
 
 ### Lab Steps

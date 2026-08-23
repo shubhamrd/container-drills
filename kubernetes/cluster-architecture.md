@@ -1,6 +1,6 @@
 # Kubernetes Cluster Architecture
 
-## Non-Technical Example
+## Real World Analogy
 Kubernetes cluster architecture is like understanding how a large hospital operates as a whole system.
 
 Think of a hospital:
@@ -18,7 +18,7 @@ In a Kubernetes cluster, these components work together:
 - **Networking** (communication system) connects everything
 - **Storage** (records) keeps track of everything
 
-## Technical Description
+## Technical Explanation
 Kubernetes cluster architecture consists of two main types of nodes:
 
 **Control Plane (Master) Nodes:**
@@ -35,7 +35,7 @@ Kubernetes cluster architecture consists of two main types of nodes:
 
 The architecture is distributed, scalable, and designed for high availability where each component can be scaled independently.
 
-## Hands-On Lab: Understanding Cluster Components
+## Lab Exercise: Understanding Cluster Components
 In this lab, you'll examine your Kubernetes cluster's architectural components.
 
 ### Lab Steps

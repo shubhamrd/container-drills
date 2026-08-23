@@ -1,6 +1,6 @@
 # Persistent Volume Claims
 
-## Non-Technical Example
+## Real World Analogy
 Persistent Volume Claims in Kubernetes are like requesting a specific parking spot in a mall parking garage.
 
 Think of it like:
@@ -17,7 +17,7 @@ In mall parking:
 4. **Time Management**: You pay based on parking duration
 5. **Return Process**: When you leave, the space becomes available again
 
-## Technical Description
+## Technical Explanation
 Persistent Volume Claims (PVCs) in Kubernetes represent requests for storage resources by users or applications. They act as a bridge between application requirements and available storage infrastructure, allowing for flexible, declarative storage management.
 
 **Key Properties:**
@@ -41,7 +41,7 @@ Persistent Volume Claims (PVCs) in Kubernetes represent requests for storage res
 - **Capacity Requirements**: Request specific amounts of storage
 - **Labels and Selectors**: Target specific types of persistent volumes
 
-## Hands-On Lab: Persistent Volume Claim Operations
+## Lab Exercise: Persistent Volume Claim Operations
 In this lab, you'll work with PVC concepts without creating actual storage.
 
 ### Lab Steps

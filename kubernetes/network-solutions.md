@@ -1,6 +1,6 @@
 # Network Solutions
 
-## Non-Technical Example
+## Real World Analogy
 Network solutions in Kubernetes is like designing and implementing different types of mail delivery systems for a large office building.
 
 Think of it like:
@@ -16,7 +16,7 @@ In a Kubernetes environment, you have different "mail delivery" solutions:
 - **External Access**: Like sending mail to addresses outside the building
 - **Advanced Routing**: Like specialized mail routes for different types of correspondence
 
-## Technical Description
+## Technical Explanation
 Network solutions in Kubernetes refer to the different networking models and implementations that enable communication between pods, services, and external systems. Several key networking approaches are available:
 
 **Container Network Interface (CNI) Plugins:**
@@ -39,7 +39,7 @@ Network solutions in Kubernetes refer to the different networking models and imp
 - **Load Balancing**: Distribution of traffic across multiple pod replicas
 - **Ingress Controllers**: HTTP/HTTPS routing for external traffic
 
-## Hands-On Lab: Exploring Network Solutions Concepts
+## Lab Exercise: Exploring Network Solutions Concepts
 In this lab, you'll investigate different network approaches and solutions.
 
 ### Lab Steps

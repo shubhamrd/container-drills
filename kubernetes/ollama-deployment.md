@@ -1,6 +1,6 @@
 # Ollama Model Deployment
 
-## Non-Technical Example
+## Real World Analogy
 Deploying Ollama models in Kubernetes is like setting up a library of AI assistants in a modern office building.
 
 Think of it like:
@@ -17,7 +17,7 @@ In the office environment:
 4. **Quality Control**: Regular assessments of how well each AI assistant performs
 5. **Service Level Agreements**: Promise of fast, accurate responses to user queries
 
-## Technical Description
+## Technical Explanation
 Ollama model deployment in Kubernetes involves running large language models and other AI/ML workloads in containerized environments. This approach leverages Kubernetes' scalability and orchestration capabilities to manage AI workloads reliably and efficiently.
 
 **Key Deployment Considerations:**
@@ -41,7 +41,7 @@ Ollama model deployment in Kubernetes involves running large language models and
 - **Health Checks**: Ensuring model availability and responsiveness
 - **Resource Constraints**: Managing memory and GPU allocation
 
-## Hands-On Lab: Ollama Deployment Concepts and Architecture
+## Lab Exercise: Ollama Deployment Concepts and Architecture
 In this lab, you'll explore Ollama deployment concepts without actually setting up ML models.
 
 ### Lab Steps

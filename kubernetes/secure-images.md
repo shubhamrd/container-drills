@@ -1,6 +1,6 @@
 # Secure Image Handling
 
-## Non-Technical Example
+## Real World Analogy
 Secure image handling in Kubernetes is like having a comprehensive security protocol for handling packages in a high-security facility.
 
 Think of it like:
@@ -17,7 +17,7 @@ In secure facility operations:
 4. **Tamper Evidence**: Clear signs if packages are compromised
 5. **Secure Handling**: Special protocols for sensitive materials
 
-## Technical Description
+## Technical Explanation
 Secure image handling in Kubernetes encompasses the practices and technologies for ensuring container images are trustworthy, unmodified, and free from vulnerabilities before deployment in production clusters. This is vital for maintaining cluster security and preventing supply chain attacks.
 
 **Image Security Components:**
@@ -41,7 +41,7 @@ Secure image handling in Kubernetes encompasses the practices and technologies f
 - **Monitoring**: Continuous observation of image-related activities
 - **Audit Trails**: Complete log of all image operations
 
-## Hands-On Lab: Image Security Concepts and Practices
+## Lab Exercise: Image Security Concepts and Practices
 In this lab, you'll explore secure image handling concepts without executing actual security protocols.
 
 ### Lab Steps
