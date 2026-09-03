@@ -93,4 +93,94 @@ In this lab, you'll get hands-on experience with basic Docker Swarm functionalit
     # docker swarm leave
     ```
 
-This lab gives you basic insights into Docker Swarm concepts and how it enables container orchestration, forming the basis for more complex distributed applications.
+### Real-World Production Swarm Setup - docker-compose.yml
+```yaml
+version: '3.8'
+
+services:
+  # Manager node service
+  manager:
+    image: docker:20.10.24-dind
+    command: dockerd --host=0.0.0.0:2375 --tls=false
+    ports:
+      - "2375:2375"
+    volumes:
+      - ./swarm-data:/var/lib/docker
+    privileged: true
+    networks:
+      - swarm-network
+  
+  nginx-app:
+    image: nginx:alpine
+    deploy:
+      replicas: 2
+    ports:
+      - "80:80"
+    networks:
+      - swarm-network
+    depends_on:
+      - manager
+
+networks:
+  swarm-network:
+    driver: overlay
+```
+
+### Production Swarm Deployment Script - deploy-swarm.sh
+```bash
+#!/bin/bash
+# Swarm cluster deployment script
+
+echo "Initializing Docker Swarm..."
+
+# Initialize swarm on manager node
+docker swarm init
+
+# Get swarm join token for workers
+JOIN_TOKEN=$(docker swarm join-token -q worker)
+
+echo "Swarm initialized successfully"
+echo "Join worker nodes with:"
+echo "docker swarm join --token $JOIN_TOKEN <manager-ip>:2377"
+
+# Create overlay network for service communication
+docker network create --driver overlay app-network
+
+# Deploy services with proper configuration
+docker service create --name nginx-app \
+  --publish 80:80 \
+  --network app-network \
+  --replicas 3 \
+  nginx:alpine
+
+echo "Services deployed successfully"
+
+# Check cluster status
+echo "Cluster status:"
+docker node ls
+docker service ls
+```
+
+### Swarm Monitoring and Management - swarm-monitor.sh
+```bash
+#!/bin/bash
+# Swarm monitoring script for production
+
+# Display swarm cluster status
+echo "=== Swarm Cluster Status ==="
+docker info | grep -i swarm
+
+echo -e "\n=== Cluster Nodes ==="
+docker node ls
+
+echo -e "\n=== Running Services ==="
+docker service ls --format "table {{.ID}}\t{{.Name}}\t{{.Replicas}}\t{{.Image}}"
+
+echo -e "\n=== Service Tasks ==="
+docker service ps --format "table {{.ID}}\t{{.Name}}\t{{.Image}}\t{{.DesiredState}}\t{{.CurrentState}}"
+
+echo -e "\n=== Resource Usage ==="
+docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"
+```
+
+This lab gives you basic insights into Docker Swarm concepts and how it enables container orchestration, forming the basis for more complex distributed applications. The enhanced version includes production-ready setup scripts and monitoring tools.

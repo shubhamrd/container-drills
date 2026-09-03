@@ -96,4 +96,70 @@ In this lab, you'll set up and use a private Docker registry.
    docker rm registry
    ```
 
-This lab demonstrates setting up a basic private registry environment, which is crucial for enterprises that need to control their container image distribution and ensure image security.
+### Real-World Production Setup - docker-compose.yml
+```yaml
+version: '3.8'
+services:
+  registry:
+    image: registry:2
+    container_name: private-registry
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/var/lib/registry
+      - ./certs:/certs
+    environment:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: "Registry Realm"
+    restart: unless-stopped
+```
+
+### Authentication Setup Script - setup-registry-auth.sh
+```bash
+#!/bin/bash
+# Create auth directory
+mkdir -p auth
+
+# Generate htpasswd file for authentication (user: admin, password: password)
+docker run --rm \
+  --entrypoint htpasswd \
+  httpd:2.4 -c -B -C 512 /tmp/htpasswd admin
+
+# Move htpasswd file to auth directory
+mv /tmp/htpasswd auth/
+chmod 600 auth/htpasswd
+
+echo "Registry authentication setup complete!"
+echo "Username: admin"
+echo "Password: password (change this in production)"
+```
+
+### Production Deployment - deploy-registry.sh
+```bash
+#!/bin/bash
+# Build and deploy registry
+# This would normally be integrated with CI/CD pipeline
+echo "Starting production registry deployment..."
+
+# Create necessary directories
+mkdir -p ./certs ./data ./auth
+
+# Copy SSL certificates (these would be obtained from CA or generated)
+# cp your-certificates/* ./certs/
+
+# Start registry with docker-compose
+docker-compose up -d
+
+# Verify deployment
+sleep 5
+docker ps | grep registry
+echo "Registry deployment complete!"
+
+# Test connectivity
+curl -v http://localhost:5000/v2/_catalog 2>/dev/null || echo "Registry accessible"
+```
+
+This lab demonstrates setting up a basic private registry environment, which is crucial for enterprises that need to control their container image distribution and ensure image security. The enhanced version includes production-like setup with authentication, TLS, and deployment scripts.

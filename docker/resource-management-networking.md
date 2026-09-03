@@ -93,4 +93,166 @@ In this lab, you'll explore Docker's resource management and networking capabili
     docker network rm my-custom-network
     ```
 
-This lab helps understand how Docker handles container resource allocation and network configuration for optimal application performance and security.
+### Production Resource Management - docker-compose.yml
+```yaml
+version: '3.8'
+
+services:
+  web-app:
+    image: nginx:alpine
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    ports:
+      - "8080:80"
+    networks:
+      - frontend
+      - backend
+    environment:
+      - ENV=production
+    restart: unless-stopped
+
+  api-app:
+    image: node:alpine
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=database
+    restart: unless-stopped
+
+  database:
+    image: postgres:13-alpine
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2G
+        reservations:
+          cpus: '1.0'
+          memory: 1G
+    environment:
+      POSTGRES_DB: myapp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    restart: unless-stopped
+
+networks:
+  frontend:
+    driver: overlay
+  backend:
+    driver: overlay
+
+volumes:
+  postgres-data:
+```
+
+### Network Configuration Best Practices - network-setup.sh
+```bash
+#!/bin/bash
+# Production network configuration script
+
+# Create production networks with proper security
+echo "Creating production networks..."
+
+# Frontend network (public access)
+docker network create \
+  --driver overlay \
+  --opt encrypted=true \
+  --opt com.docker.network.bridge.enable_ip_masquerade=true \
+  --opt com.docker.network.bridge.enable_icc=true \
+  frontend-network
+
+# Backend network (internal services only)  
+docker network create \
+  --driver overlay \
+  --opt encrypted=true \
+  --opt com.docker.network.bridge.enable_ip_masquerade=true \
+  --opt com.docker.network.bridge.enable_icc=true \
+  backend-network
+
+# Database network (most restrictive)
+docker network create \
+  --driver overlay \
+  --opt encrypted=true \
+  --opt com.docker.network.bridge.enable_ip_masquerade=true \
+  database-network
+
+echo "Networks created successfully!"
+
+# Validate network configurations
+docker network ls
+```
+
+### Resource Monitoring Dashboard - resource-monitor.py
+```python
+#!/usr/bin/env python3
+"""
+Production resource monitoring for Docker containers
+"""
+import docker
+import json
+import time
+from datetime import datetime
+
+def monitor_resources():
+    client = docker.from_env()
+    
+    print("Docker Resource Monitoring")
+    print("=" * 50)
+    
+    # Get all running containers
+    containers = client.containers.list()
+    
+    for container in containers:
+        try:
+            # Get container stats
+            stats = container.stats(stream=False)
+            
+            print(f"\nContainer: {container.name}")
+            print(f"Status: {container.status}")
+            
+            # Extract resource usage
+            if 'cpu_stats' in stats and 'precpu_stats' in stats:
+                cpu_delta = stats['cpu_stats']['cpu_usage']['total_usage'] - stats['precpu_stats']['cpu_usage']['total_usage']
+                system_delta = stats['cpu_stats']['system_cpu_usage'] - stats['precpu_stats']['system_cpu_usage']
+                
+                if system_delta > 0:
+                    cpu_percent = (cpu_delta / system_delta) * 100
+                    print(f"CPU Usage: {cpu_percent:.2f}%")
+            
+            if 'memory_stats' in stats:
+                mem_usage = stats['memory_stats']['usage']
+                mem_limit = stats['memory_stats']['limit']
+                mem_percent = (mem_usage / mem_limit) * 100 if mem_limit > 0 else 0
+                print(f"Memory Usage: {mem_usage/(1024*1024):.2f}MB / {mem_limit/(1024*1024):.2f}MB ({mem_percent:.2f}%)")
+                
+        except Exception as e:\n            print(f"Error monitoring {container.name}: {e}")
+
+if __name__ == "__main__":
+    # Run monitoring continuously
+    while True:
+        monitor_resources()
+        time.sleep(10)
+```
+
+This lab helps understand how Docker handles container resource allocation and network configuration for optimal application performance and security. The enhanced version includes production-ready configurations, monitoring scripts, and real-world examples of best practices.

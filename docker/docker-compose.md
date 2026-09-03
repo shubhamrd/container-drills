@@ -159,4 +159,271 @@ In this lab, you'll set up and manage a multi-container application using Docker
     rm -rf docker-compose-lab
     ```
 
-This lab demonstrates the core principles and practical usage of Docker Compose for managing complex multi-container applications.
+### Production-Grade Docker Compose - docker-compose.yml
+```yaml
+version: '3.8'
+
+services:
+  # Web Application Layer
+  nginx:
+    image: nginx:alpine
+    container_name: web-server
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d\n      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./logs/nginx:/var/log/nginx
+    depends_on:
+      - app
+    networks:
+      - frontend
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Application Layer
+  app:
+    build: .
+    container_name: node-app
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DB_HOST=database
+      - REDIS_HOST=redis-cache
+    expose:
+      - "3000"
+    depends_on:
+      - database
+      - redis-cache
+    networks:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  # Database Service
+  database:
+    image: postgres:13-alpine
+    container_name: postgres-db
+    environment:
+      - POSTGRES_DB=myapp
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=your_secure_password_here
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+      - ./logs/postgres:/var/log/postgresql
+    networks:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Redis Cache Service
+  redis-cache:
+    image: redis:alpine
+    container_name: redis-cache
+    command: redis-server --requirepass your_redis_password
+    volumes:
+      - redis_data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Network definitions
+networks:
+  frontend:
+    driver: overlay
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/16
+          gateway: 172.25.0.1
+  backend:
+    driver: overlay
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.26.0.0/16
+          gateway: 172.26.0.1
+
+# Volume definitions for persistence
+volumes:
+  postgres_data:
+  redis_data:
+
+# Environment-specific override files
+# Use with: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+```
+
+### Production Build Configuration - Dockerfile
+```dockerfile
+# Production Dockerfile for Node.js application
+FROM node:16-alpine AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nextjs -u 1001
+
+# Copy source files
+COPY . .
+
+# Change ownership to non-root user
+USER nextjs
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:3000/health || exit 1
+
+# Start the application
+CMD ["node", "server.js"]
+```
+
+### Production Ready Scripts
+
+#### deploy.sh - Production deployment script
+```bash
+#!/bin/bash
+# Production deployment script for Docker Compose
+
+# Configuration
+COMPOSE_FILE="docker-compose.yml"
+ENV_FILE=".env.production"
+
+# Load environment variables
+if [ -f "$ENV_FILE" ]; then
+    export $(cat "$ENV_FILE" | xargs)
+fi
+
+echo "🚀 Starting Production Deployment"
+echo "================================"
+
+# 1. Pull latest images
+echo "1. Pulling latest images..."
+docker-compose pull
+
+# 2. Build images if needed
+echo "2. Building application images..."
+docker-compose build
+
+# 3. Bring up services
+echo "3. Starting services..."
+docker-compose up -d
+
+# 4. Check service status
+echo "4. Verifying service status..."
+timeout 60 docker-compose ps
+
+# 5. Wait for health checks
+echo "5. Waiting for services to be healthy..."
+sleep 10
+
+# 6. Verify health status
+echo "6. Final service status:"
+docker-compose ps
+
+# 7. Log deployment info
+echo "================================"
+echo "Deployment completed successfully"
+echo "Services running: $(docker-compose ps --format \"{{.Names}}\" | tr '\n' ' ')"
+echo "================================"
+
+exit 0
+```
+
+#### backup.sh - Data backup script
+```bash
+#!/bin/bash
+# Production backup script for database and persistent data
+
+BACKUP_DIR="./backups"
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+DB_BACKUP_FILE="$BACKUP_DIR/db_backup_$TIMESTAMP.sql"
+
+# Ensure backup directory exists
+mkdir -p "$BACKUP_DIR"
+
+echo "📦 Starting Database Backup"
+echo "=========================="
+
+# Backup PostgreSQL database
+if docker compose exec database pg_dump -U postgres myapp > "$DB_BACKUP_FILE"; then
+    echo "✅ Database backup created: $DB_BACKUP_FILE"
+    echo "Size: $(du -h "$DB_BACKUP_FILE" | cut -f1)"
+    
+    # Compress backup
+    gzip "$DB_BACKUP_FILE"
+    echo "✅ Backup compressed"
+else
+    echo "❌ Database backup failed"
+    exit 1
+fi
+
+# Backup Redis data
+echo "📦 Backing up Redis data..."
+if docker compose exec redis-cache redis-cli SAVE > /dev/null 2>&1; then
+    echo "✅ Redis data backup completed"
+fi
+
+# Cleanup old backups (keep last 7 days)
+find "$BACKUP_DIR" -name "*.sql.gz" -mtime +7 -delete
+echo "🧹 Old backups cleaned up"
+
+echo "🎉 Backup process completed successfully"
+```
+
+This lab demonstrates the core principles and practical usage of Docker Compose for managing complex multi-container applications. The enhanced version includes production-grade configurations with security, monitoring, logging, and deployment scripts.

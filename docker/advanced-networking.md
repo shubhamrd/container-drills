@@ -101,4 +101,212 @@ In this lab, you'll explore advanced Docker networking features.
     docker rm -f user-net-container 2>/dev/null || true
     ```
 
-This lab explores sophisticated Docker network configurations that support complex application architectures and enterprise deployment scenarios.
+### Production Advanced Networking - docker-compose.yml
+```yaml
+version: '3.8'
+
+services:
+  # Web application with custom network configuration
+  web-app:
+    image: nginx:alpine
+    networks:
+      frontend:
+        aliases:
+          - web.frontend.internal
+          - nginx.web.internal
+      backend:
+        aliases:
+          - app.backend.internal
+    ports:
+      - "80:80"
+      - "443:443"
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    environment:
+      - NGINX_HOST=webapp.example.com
+      - ENV=production
+      
+  # Application API with restricted network access
+  api-app:
+    image: node:alpine
+    networks:
+      backend:
+        aliases:
+          - api.backend.internal
+          - app.api.internal
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=database
+      - REDIS_HOST=cache
+    deploy:
+      replicas: 2
+    depends_on:
+      - database
+      - cache
+    restart: unless-stopped
+
+  # Database with restricted access
+  database:
+    image: postgres:13-alpine
+    networks:
+      backend:
+        aliases:
+          - db.backend.internal
+    environment:
+      POSTGRES_DB: myapp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    deploy:
+      replicas: 1
+    restart: unless-stopped
+
+  # Cache service
+  cache:
+    image: redis:alpine
+    networks:
+      backend:
+        aliases:
+          - cache.backend.internal
+    deploy:
+      replicas: 1
+    restart: unless-stopped
+
+networks:
+  # Frontend network - public access
+  frontend:
+    driver: overlay
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16
+          gateway: 172.22.0.1
+    options:
+      com.docker.network.bridge.enable_ip_masquerade: "true"
+      com.docker.network.bridge.enable_icc: "true"
+      
+  # Backend network - private access only
+  backend:
+    driver: overlay
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.23.0.0/16
+          gateway: 172.23.0.1
+    options:
+      com.docker.network.bridge.enable_ip_masquerade: "true"
+      com.docker.network.bridge.enable_icc: "false"
+      
+  # Management network - admin access
+  management:
+    driver: overlay
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.24.0.0/16
+          gateway: 172.24.0.1
+    internal: true  # Fully isolated network
+      
+volumes:
+  postgres-data:
+```
+
+### Network Security and Monitoring - network-security.sh
+```bash
+#!/bin/bash
+# Network security and monitoring for Docker containers
+
+echo "=== Docker Network Security Audit ==="
+
+# 1. Check for exposed ports
+echo "1. Exposed Ports Analysis"
+echo "========================"
+docker ps --format "table {{.Names}}\t{{.Ports}}" | tail -n +2 | while read name ports; do
+    if [[ "$ports" =~ [0-9]+:[0-9]+ ]]; then
+        echo "- $name: $ports"
+    fi
+done
+
+echo ""
+# 2. Network Isolation Check
+echo "2. Network Isolation Report"
+echo "==========================="
+for network in $(docker network ls --format "{{.Name}}"); do
+    echo "- Network: $network"
+    docker network inspect "$network" | grep -E "(Type|Containers)" | head -5
+done
+
+echo ""
+# 3. Port Firewall Rules (for production systems)
+echo "3. Docker Port Security Recommendations"
+echo "======================================"
+# In production, you'd typically also configure iptables rules
+echo "Recommended: Implement external firewall rules for exposed ports"
+echo "Recommended: Use network policies for additional isolation"
+echo "Recommended: Disable host networking for production containers"
+```
+
+### Network Troubleshooting Script - network-troubleshoot.sh
+```bash
+#!/bin/bash
+# Comprehensive network troubleshooting script
+
+set -e
+
+echo "Docker Network Troubleshooting Suite"
+echo "==================================="
+
+# Check Docker daemon status
+echo "1. Docker Daemon Status"
+echo "======================"
+systemctl status docker >/dev/null 2>&1 && echo "✓ Docker daemon running" || echo "✗ Docker daemon not running"
+
+# Check Docker networks
+echo ""
+echo "2. Network Summary"
+echo "================="
+docker network ls
+
+# Check network connectivity between containers
+echo ""
+echo "3. Network Connectivity Tests"
+echo "============================"
+
+# List running containers
+containers=$(docker ps --format "{{.Names}}" | head -n 5)  # Limit to first 5
+
+for container in $containers; do
+    if [ ! -z "$container" ]; then
+        echo "Testing connectivity for $container..."
+        # Basic ping test (if available in container)
+        docker exec "$container" timeout 5 ping -c 1 8.8.8.8 2>/dev/null && echo "✓ Internet connectivity OK" || echo "✗ No internet connectivity"
+    fi
+done
+
+# Check network configuration details
+echo ""
+echo "4. Network Configuration Details"
+echo "=============================="
+for network in $(docker network ls --format "{{.Name}}"); do
+    echo "Network: $network"
+    docker network inspect "$network" | jq -r ".[].IPAM.Config[] | \"  Subnet: \(.Subnet) Gateway: \(.Gateway)\"" 2>/dev/null || echo "  (Could not parse configuration)"
+done
+
+echo ""
+echo "Troubleshooting Complete"
+```
+
+This lab explores sophisticated Docker network configurations that support complex application architectures and enterprise deployment scenarios. The enhanced version includes production-grade configurations with network policies, security considerations, and troubleshooting scripts.

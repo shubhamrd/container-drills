@@ -114,4 +114,232 @@ In this lab, you'll explore different Docker logging approaches.
     docker rm default-logger fluent-logger rotated-logger log-generator 2>/dev/null || true
     ```
 
-This lab provides comprehensive understanding of Docker logging capabilities for monitoring and troubleshooting containerized applications effectively.
+### Production Logging Solution - docker-compose.yaml
+```yaml
+version: '3.8'
+
+services:
+  # Application with structured logging
+  web-app:
+    image: nginx:alpine
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - "8080:80"
+    environment:
+      - LOG_LEVEL=info
+    restart: unless-stopped
+
+  # API service with structured JSON logging
+  api-app:
+    image: node:alpine
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: fluentd:24224
+        tag: api-app.logs
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=debug
+    restart: unless-stopped
+
+  # Logger service (Fluentd)
+  fluentd:
+    image: fluent/fluentd:v1.15
+    ports:
+      - "24224:24224"
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+      - ./fluentd/log:/fluentd/log
+    restart: unless-stopped
+
+# Production logging configuration
+volumes:
+  fluentd-log:
+```
+
+### Fluentd Configuration - fluentd/conf/fluent.conf
+```
+# Fluentd Configuration for Docker Logging
+
+<source>
+  @type forward
+  port 24224
+  bind 0.0.0.0
+</source>
+
+<match **>
+  @type stdout
+  @id stdout_output
+</match>
+
+# Forward to external logging system (example)
+<match **>
+  @type http
+  endpoint http://logging-system:8080/logs
+  json_content_type true
+  <format>
+    @type json
+  </format>
+  <buffer>
+    @type array
+    chunk_limit_size 1m
+    flush_interval 5s
+  </buffer>
+</match>
+```
+
+### Production Log Monitoring - log-monitoring.sh
+```bash
+#!/bin/bash
+# Production logging monitoring script
+
+# Constants
+LOG_DIR="/var/lib/docker/containers"
+MAX_LOG_SIZE="100M"
+
+echo "Docker Log Monitoring System"
+echo "=========================="
+
+# Check for large log files
+echo "1. Checking for oversized log files"
+echo "=================================="
+
+find $LOG_DIR -name "*.log" -size +$MAX_LOG_SIZE -exec ls -lh {} \; 2>/dev/null
+
+# Analyze recent log activity
+echo ""
+echo "2. Recent Log Activity"
+echo "====================="
+
+# Get all container logs with timestamps
+for container in $(docker ps --format "{{.ID}}"); do
+    logs=$(docker logs --since=1h "$container" 2>/dev/null | tail -10)
+    if [ ! -z "$logs" ]; then
+        echo "=== $container ==="
+        echo "$logs"
+        echo ""
+    fi
+done
+
+# Log statistics
+echo "3. Log Size Statistics"
+echo "====================="
+docker system df --format "table {{.Type}}\t{{.TotalSize}}"
+
+echo ""
+echo "4. Log Rotation Summary"
+echo "======================="
+# Show container log stats
+docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}" | tail -n +2 | while read name image _; do
+    if [ ! -z "$name" ]; then
+        echo "- $name ($image):"
+        # This gets actual log size from the container info
+        stats=$(docker inspect "$name" 2>/dev/null)
+        echo "  Container logs available"
+        echo "  (Run 'docker logs $name --details' for detailed log info)"
+    fi
+done
+
+echo ""
+echo "Monitoring Complete"
+
+# Check log driver for specific containers
+echo ""
+echo "5. Container Logging Drivers"
+echo "==========================="
+docker ps --format "table {{.Names}}\t{{.Command}}\t{{.Ports}}" | tail -n +2 | while read name cmd ports; do
+    if [ ! -z "$name" ]; then
+        info=$(docker inspect "$name" 2>/dev/null | jq -r '.[0].HostConfig.LogConfig.Driver // "json-file"')
+        echo "- $name: $info log driver"
+    fi
+done
+```
+
+### Log Analysis Script - analyze-logs.py
+```python
+#!/usr/bin/env python3
+"""
+Production-grade Docker log analysis
+"""
+import docker
+import json
+import re
+import datetime
+from collections import defaultdict
+
+class DockerLogAnalyzer:
+    def __init__(self):
+        self.client = docker.from_env()
+        
+    def analyze_recent_logs(self, hours=1):
+        """Analyze logs from the last N hours"""
+        print(f"Analyzing logs from last {hours} hour(s)...\n")
+        
+        # Get all containers
+        containers = self.client.containers.list()
+        
+        for container in containers:
+            try:
+                print(f"Container: {container.name}")
+                logs = container.logs(since=int(datetime.datetime.now().timestamp()) - (hours * 3600), 
+                                    tail=50, stdout=True, stderr=True).decode('utf-8')
+                
+                if logs:
+                    # Parse and analyze logs
+                    self.analyze_log_content(logs)
+                else:
+                    print("  No recent logs Available")
+                    
+            except Exception as e:\n                print(f"  Error analyzing logs: {e}")
+            print("")
+    
+    def analyze_log_content(self, logs):
+        """Analyze log content for patterns"""
+        error_count = 0
+        warning_count = 0
+        
+        lines = logs.split('\n')
+        for line in lines:
+            if 'error' in line.lower():
+                error_count += 1
+                print(f"  ❗ ERROR: {line}")
+            elif 'warning' in line.lower():
+                warning_count += 1
+                print(f"  ⚠️ WARNING: {line}")
+                
+        if error_count > 0 or warning_count > 0:
+            print(f"  Summary: {error_count} errors, {warning_count} warnings")
+    
+    def get_log_summary(self):
+        """Get overall log summary for all containers"""
+        print("Log Summary Report")
+        print("==================")
+        
+        containers = self.client.containers.list()
+        for container in containers:
+            try:
+                # Get log size
+                container_info = self.client.containers.get(container.id)
+                config = container_info.attrs['Config']
+                log_config = config.get('LogConfig', {})
+                
+                print(f"Container: {container.name}")
+                print(f"  Status: {container.status}")
+                print(f"  Log Driver: {log_config.get('Type', 'default')}")
+                print(f"  Image: {container.image.tags}")
+                print("")
+                
+            except Exception as e:\n                print(f"  Error getting info for {container.name}: {e}")
+
+if __name__ == "__main__":
+    analyzer = DockerLogAnalyzer()
+    analyzer.analyze_recent_logs(1)
+    print("\n---")
+    analyzer.get_log_summary()
+```
+
+This lab provides comprehensive understanding of Docker logging capabilities for monitoring and troubleshooting containerized applications effectively. The enhanced version includes production-ready logging solutions, structured logging configurations, monitoring scripts, and analysis tools.

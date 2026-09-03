@@ -116,4 +116,161 @@ In this lab, you'll practice common Docker troubleshooting techniques.
     docker system df
     ```
 
-This lab provides hands-on experience with common Docker troubleshooting scenarios and techniques for diagnosing and resolving container issues.
+### Production Troubleshooting Toolkit - troubleshooting.sh
+```bash
+#!/bin/bash
+# Comprehensive Docker troubleshooting toolkit
+
+echo "Docker Production Troubleshooting Toolkit"
+echo "========================================"
+
+# 1. System Health Check
+echo "1. System Health Check"
+echo "====================="
+docker info | grep -E "(Server Version|Kernel Version|Operating System|CPUs|Memory)"
+echo ""
+
+# 2. Running Containers Health
+echo "2. Running Containers"
+echo "==================="
+docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
+echo ""
+
+# 3. Container Logs Analysis
+echo "3. Recent Container Errors"
+echo "========================"
+docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}" | tail -n +2 | while read container _ _ status; do
+    if [[ "$status" != *"Up"* ]]; then
+        echo "Container: $container - Error Status"
+        docker logs --tail 20 "$container" 2>/dev/null || echo "No logs available"
+        echo ""
+    fi
+done
+
+# 4. Resource Usage
+echo "4. Resource Usage"
+echo "==============="
+docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}" | head -10
+echo ""
+
+# 5. Disk Usage
+echo "5. Disk Usage"
+echo "============"
+docker system df -h
+echo ""
+
+# 6. Network Issues Check
+echo "6. Network Configuration"
+echo "======================="
+docker network ls
+echo ""
+docker network inspect bridge 2>/dev/null | grep -A 5 -B 5 "Containers" || echo "Bridge network info not available"
+```
+
+### Docker Log Monitoring with Alerts - log-monitor.py
+```python
+#!/usr/bin/env python3
+"""
+Production Docker log monitoring with alerting
+"""
+import subprocess
+import re
+import time
+import smtplib
+from email.mime.text import MimeText
+
+class DockerLogMonitor:
+    def __init__(self):
+        self.error_patterns = [
+            r'error',
+            r'fatal',
+            r'exception',
+            r'critical',
+            r'failed',
+            r'unexpected'
+        ]
+        
+    def monitor_containers(self):
+        """Monitor all running containers for errors"""
+        try:
+            # Get running containers
+            result = subprocess.run(['docker', 'ps', '--format', '{{.ID}}'], 
+                                  capture_output=True, text=True, check=True)
+            
+            containers = result.stdout.strip().split('\n')
+            
+            for container_id in containers:
+                if container_id:
+                    # Get recent logs
+                    logs = subprocess.run(['docker', 'logs', '--tail', '100', container_id],
+                                         capture_output=True, text=True)
+                    
+                    errors = []
+                    for line in logs.stdout.split('\n'):
+                        for pattern in self.error_patterns:
+                            if re.search(pattern, line, re.IGNORECASE):
+                                errors.append((pattern, line))
+                                
+                    if errors:
+                        print(f"⚠️  ERRORS FOUND in container {container_id}:")
+                        for pattern, line in errors[:3]:  # Show first 3 errors
+                            print(f"  [{pattern.upper()}] {line}")
+                            
+        except Exception as e:\n            print(f"Error in monitoring: {e}")
+            
+    def check_memory_usage(self):
+        """Check high memory usage containers"""
+        try:
+            result = subprocess.run(['docker', 'stats', '--no-stream', '--format', 
+                                   '{{.Name}}\t{{.MemPercent}}'], 
+                                  capture_output=True, text=True, check=True)
+            
+            stats = result.stdout.strip().split('\n')
+            for stat in stats:
+                if stat:
+                    parts = stat.split('\t')
+                    if len(parts) >= 2:
+                        name, mem_percent = parts[0], parts[1].rstrip('%')
+                        try:
+                            percent = float(mem_percent)
+                            if percent > 80:  # Alert if over 80% memory
+                                print(f"⚠️  HIGH MEMORY USAGE: {name} at {percent}%")
+                        except ValueError:
+                            continue
+        except Exception as e:\n            print(f"Error in memory check: {e}")
+
+if __name__ == "__main__":
+    monitor = DockerLogMonitor()
+    print("Starting Docker log and resource monitoring...")
+    while True:
+        monitor.monitor_containers()
+        monitor.check_memory_usage()
+        time.sleep(60)  # Check every minute
+```
+
+### Common Troubleshooting Commands Reference
+```bash
+# Emergency Recovery Commands
+docker system prune -f                       # Remove unused containers, networks, images
+docker system prune -a -f                   # Remove all unused resources  
+docker volume prune -f                      # Clean up unused volumes
+docker builder prune -f                     # Clean up build cache
+
+# Debug Container Startup Issues
+docker run --rm -it --entrypoint /bin/bash <image-name>  # Debug container shell
+docker logs <container-name> --details     # Detailed container logs
+docker inspect <container-name>            # Deep container inspection
+
+# Network Troubleshooting
+docker network ls                          # List all networks
+docker network inspect <network-name>      # Inspect network details
+docker run --rm --network <network> alpine ping <target>  # Test network connectivity
+
+# Resource Analysis
+docker stats --no-stream                   # Quick resource overview
+docker system df                           # Storage usage analysis
+docker events                              # View recent Docker events
+docker top <container>                     # View container processes
+```
+
+This lab provides hands-on experience with common Docker troubleshooting scenarios and techniques for diagnosing and resolving container issues. The enhanced version includes production-ready monitoring scripts, alerting systems, and troubleshooting utilities.
