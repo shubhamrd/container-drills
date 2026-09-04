@@ -52,6 +52,9 @@ Thumbs.db
 user-data/
 uploads/
 
+# Script files
+fix_headings.sh
+
 # Backup files
 *.bak
 *.backup
